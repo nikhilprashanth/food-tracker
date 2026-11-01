@@ -94,7 +94,7 @@ food-tracker/
 ├── scripts/
 │   ├── today.sh           # daily totals via jq
 │   └── test_api.sh        # curl test of the USDA API
-├── Eisenhower_Matrix.pdf/ # Eisenhower Matrix
+├── Eisenhower_Matrix.pdf # Eisenhower Matrix
 ├── Schematic_Diagram.png  # System Diagram
 └── data/                  # log.json is created here
 ```
