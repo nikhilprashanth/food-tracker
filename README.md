@@ -89,13 +89,14 @@ Optional: print your totals every night at 9 pm by adding this line with `cronta
 ```
 food-tracker/
 ├── README.md
-├── run.sh              # entry point
-├── src/tracker.py      # main program
+├── run.sh                 # entry point
+├── src/tracker.py         # main program
 ├── scripts/
-│   ├── today.sh        # daily totals via jq
-│   └── test_api.sh     # curl test of the USDA API
-├── docs/               # diagrams and Eisenhower Matrix
-└── data/               # log.json is created here
+│   ├── today.sh           # daily totals via jq
+│   └── test_api.sh        # curl test of the USDA API
+├── Eisenhower_Matrix.pdf/ # Eisenhower Matrix
+├── Schematic_Diagram.png  # System Diagram
+└── data/                  # log.json is created here
 ```
 
 ## Roadmap
