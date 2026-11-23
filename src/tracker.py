@@ -51,3 +51,45 @@ def save_entry(entry):
     log.append(entry)
     with open(LOG_PATH, "w") as f:
         json.dump(log, f, indent=2)
+
+
+def main():
+    if not API_KEY:
+        sys.exit("Set the USDA_API_KEY environment variable first.")
+
+    query = input("Food: ").strip()
+    try:
+        foods = search_foods(query)
+    except requests.RequestException as e:
+        sys.exit(f"API error: {e}")
+
+    if not foods:
+        sys.exit("No matches found.")
+
+    for i, food in enumerate(foods, 1):
+        print(f"{i}) {food['description']}")
+
+    try:
+        choice = int(input("Pick a match: ")) - 1
+        grams = float(input("Grams: "))
+        food = foods[choice]
+    except (ValueError, IndexError):
+        sys.exit("Invalid input.")
+
+    result = scale(per_100g(food), grams)
+    print(
+        f"\nCalories: {result['calories']:.0f}   Protein: {result['protein']} g   "
+        f"Carbs: {result['carbs']} g   Fat: {result['fat']} g"
+    )
+
+    save_entry({
+        "date": date.today().isoformat(),
+        "food": food["description"],
+        "grams": grams,
+        **result,
+    })
+    print("Saved to data/log.json")
+
+
+if __name__ == "__main__":
+    main()
