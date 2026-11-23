@@ -35,3 +35,19 @@ def per_100g(food):
                 values[name] = n.get("value", 0)
     return values
 
+
+
+def scale(values, grams):
+    return {k: round(v * grams / 100, 1) for k, v in values.items()}
+
+
+def save_entry(entry):
+    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+    try:
+        with open(LOG_PATH) as f:
+            log = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        log = []
+    log.append(entry)
+    with open(LOG_PATH, "w") as f:
+        json.dump(log, f, indent=2)
