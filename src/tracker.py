@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-from datetime import date
+from datetime import datetime
 
 import requests
 
@@ -82,8 +82,10 @@ def main():
         f"Carbs: {result['carbs']} g   Fat: {result['fat']} g"
     )
 
+    now = datetime.now()
     save_entry({
-        "date": date.today().isoformat(),
+        "date": now.date().isoformat(),
+        "time": now.strftime("%H:%M"),
         "food": food["description"],
         "grams": grams,
         **result,
