@@ -106,7 +106,7 @@ Features I haven't built yet but plan to:
 - [ ] Design a good user interface
 - [ ] Allow users to enter multiple food items for each meal
 - [ ] Improve error handling features, and missing data for particular foods
-- [ ] Add a food intake summary per day
+- [x] Add a food intake summary per day
 
 ## Author
 
